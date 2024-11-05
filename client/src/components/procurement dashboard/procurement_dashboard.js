@@ -44,7 +44,7 @@ const ProcurementDashboard = () => {
   // Year options (for example, from 2020 to the current year)
   const years = Array.from(
     { length: currentYear - 2019 },
-    (_, i) => currentYear - i,
+    (_, i) => currentYear - i
   );
 
   return (
@@ -53,7 +53,9 @@ const ProcurementDashboard = () => {
       <Sidebar onSidebarToggle={setIsSidebarOpen} />
       {/* Main Dashboard Content */}
       <div
-        className={`p-6 bg-gray-100 min-h-screen w-full transition-all duration-300 ${isSidebarOpen ? "lg:ml-64" : "lg:ml-20"}`}
+        className={`p-6 bg-gray-100 min-h-screen w-full transition-all duration-300 ${
+          isSidebarOpen ? "lg:ml-64" : "lg:ml-20"
+        }`}
       >
         <Header title={"Procurement Transparency Dashboard"} />
         {/* Filters Section */}
@@ -129,6 +131,16 @@ const ProcurementDashboard = () => {
                   href="https://home.eprolehan.gov.my"
                 >
                   https://home.eprolehan.gov.my
+                </a>
+              </li>
+              <li>
+                Dashboard source code{" "}
+                <a
+                  target="_blank"
+                  rel="noreferrer"
+                  href="https://github.com/purrnama/integrity-eyes"
+                >
+                  https://github.com/purrnama/integrity-eyes
                 </a>
               </li>
             </ol>

@@ -9,7 +9,7 @@ Procurement Transparency Dashboard
 - `python3`
 - `python3-pip`
 - `python3-venv`
-- `node`
+- `npm`
 
 ### Install Python Packages
 
