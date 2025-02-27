@@ -1,0 +1,30 @@
+{
+  "procurement-transparency": {
+    "Procurement Transparency": "Procurement Transparency",
+    "Total Advertisement Tenders": "Total Advertisement Tenders",
+    "Total Awarded Contracts": "Total Awarded Contracts",
+    "Region with Most Contracts": "Region with Most Contracts",
+    "Ministry with Most Contracts": "Ministry with Most Contracts",
+    "Last 30 days": "Last 30 days",
+    "Top Companies with Most Awarded Contracts": "Top Companies with Most Awarded Contracts",
+    "Region and Sectors": "Region and Sectors",
+    "Current Tenders": "Current Tenders",
+    "Remarks": "Remarks",
+    "Dashboard Remarks": "Dashboard Remarks",
+    "Close": "Close",
+    "Data sources": "Data sources",
+    "MyProcurement Malaysian Ministry of Finance Portal": "MyProcurement Malaysian Ministry of Finance Portal",
+    "CIDB Construction Industry Development Board": "CIDB Construction Industry Development Board",
+    "JKR Public Works Department of Malaysia": "JKR Public Works Department of Malaysia",
+    "ePerolehan Malaysian Electronic Procurement System": "ePerolehan Malaysian Electronic Procurement System"
+  },
+  "menu-content": {
+    "Home": "Home",
+    "Procurement Transparency": "Procurement Transparency",
+    "Risk Management": "Risk Management",
+    "Project Performance": "Project Performance",
+    "Risks & Red Flags": "Risks & Red Flags",
+    "Stakeholder Feedback": "Stakeholder Feedback",
+    "Settings": "Settings"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "procurement-transparency": {
+    "Procurement Transparency": "Ketelusan Perolehan",
+    "Total Advertisement Tenders": "Jumlah Iklan Tender",
+    "Total Awarded Contracts": "Jumlah Kontrak yang Dianugerahkan",
+    "Region with Most Contracts": "Negeri dengan Kontrak Terbanyak",
+    "Ministry with Most Contracts": "Menteri dengan Kontrak Terbanyak",
+    "Last 30 days": "30 hari lepas",
+    "Top Companies with Most Awarded Contracts": "Syarikat Teratas dengan Kontrak yang Dianugerahkan Terbanyak",
+    "Region and Sectors": "Wilayah dan Sektor-Sektor",
+    "Current Tenders": "Tender-Tender Terkini",
+    "Remarks": "Komen",
+    "Dashboard Remarks": "Komen Papan Pemuka",
+    "Close": "Tutup",
+    "Data sources": "Sumber data",
+    "MyProcurement Malaysian Ministry of Finance Portal": "MyProcurement Pusat Maklumat Perolehan Kerajaan",
+    "CIDB Construction Industry Development Board": "CIDB Lembaga Pembangunan Industri Pembinaan Malaysia",
+    "JKR Public Works Department of Malaysia": "JKR Jabatan Kerja Raya Malaysia",
+    "ePerolehan Malaysian Electronic Procurement System": "ePerolehan Kerajaan Malaysia"
+  },
+  "menu-content": {
+    "Home": "Utama",
+    "Procurement Transparency": "Ketelusan Perolehan",
+    "Risk Management": "Pengurusan Risiko",
+    "Project Performance": "Prestasi Project",
+    "Risks & Red Flags": "Risiko & Tanda Bahaya",
+    "Stakeholder Feedback": "Maklum Balas Stakeholder",
+    "Settings": "Tetapan"
+  }
+}
