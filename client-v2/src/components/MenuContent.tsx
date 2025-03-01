@@ -66,6 +66,7 @@ export default function MenuContent() {
             }
           >
             <Link
+              //@ts-expect-error type
               href={item.href}
               className="transition flex flex-row space-x-4 p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg"
             >
@@ -88,6 +89,7 @@ export default function MenuContent() {
             }
           >
             <Link
+              //@ts-expect-error type
               href={item.href}
               className="transition flex flex-row space-x-4 p-2 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg"
             >

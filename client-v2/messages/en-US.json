@@ -26,5 +26,12 @@
     "Risks & Red Flags": "Risks & Red Flags",
     "Stakeholder Feedback": "Stakeholder Feedback",
     "Settings": "Settings"
+  },
+  "language-select": {
+    "en-US": "English",
+    "ms-MY": "Bahasa Malaysia"
+  },
+  "heatmap-filter": {
+    "Filter": "Filter"
   }
 }

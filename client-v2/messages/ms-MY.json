@@ -26,5 +26,12 @@
     "Risks & Red Flags": "Risiko & Tanda Bahaya",
     "Stakeholder Feedback": "Maklum Balas Stakeholder",
     "Settings": "Tetapan"
+  },
+  "language-select": {
+    "en-US": "English",
+    "ms-MY": "Bahasa Malaysia"
+  },
+  "heatmap-filter": {
+    "Filter": "Tapis"
   }
 }
