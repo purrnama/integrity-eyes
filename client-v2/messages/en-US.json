@@ -9,6 +9,7 @@
     "Top Companies with Most Awarded Contracts": "Top Companies with Most Awarded Contracts",
     "Region and Sectors": "Region and Sectors",
     "Current Tenders": "Current Tenders",
+    "Contracts": "Contracts",
     "Remarks": "Remarks",
     "Dashboard Remarks": "Dashboard Remarks",
     "Close": "Close",
@@ -31,7 +32,8 @@
     "en-US": "English",
     "ms-MY": "Bahasa Malaysia"
   },
-  "heatmap-filter": {
-    "Filter": "Filter"
+  "heatmap": {
+    "Filter": "Filter",
+    "Projects": "Projects"
   }
 }

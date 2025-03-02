@@ -3,7 +3,13 @@
 import AppTheme from "@/theme/AppTheme";
 import { BarChart } from "@mui/x-charts";
 
-export default function TopCompaniesChart({ title }: { title: string }) {
+export default function TopCompaniesChart({
+  title,
+  tooltip,
+}: {
+  title: string;
+  tooltip: string;
+}) {
   return (
     <div className="flex flex-col flex-1 h-full grow p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg">
       <h2 className="font-medium">{title}</h2>
@@ -14,6 +20,7 @@ export default function TopCompaniesChart({ title }: { title: string }) {
           xAxis={[
             {
               scaleType: "band",
+              //@ts-expect-error skip type check
               categoryGapRatio: 0.5,
               data: [
                 "KOSAS SDN. BHD.",
@@ -24,7 +31,7 @@ export default function TopCompaniesChart({ title }: { title: string }) {
               ],
             },
           ]}
-          series={[{ id: "tenders", label: "Tenders", data: [4, 3, 2, 1, 1] }]}
+          series={[{ id: "tenders", label: tooltip, data: [4, 3, 2, 1, 1] }]}
           height={300}
           margin={{ left: 24, right: 24, top: 32, bottom: 32 }}
           grid={{ horizontal: true }}

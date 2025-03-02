@@ -9,6 +9,7 @@
     "Top Companies with Most Awarded Contracts": "Syarikat Teratas dengan Kontrak yang Dianugerahkan Terbanyak",
     "Region and Sectors": "Wilayah dan Sektor-Sektor",
     "Current Tenders": "Tender-Tender Terkini",
+    "Contracts": "Kontrak",
     "Remarks": "Komen",
     "Dashboard Remarks": "Komen Papan Pemuka",
     "Close": "Tutup",
@@ -31,7 +32,8 @@
     "en-US": "English",
     "ms-MY": "Bahasa Malaysia"
   },
-  "heatmap-filter": {
-    "Filter": "Tapis"
+  "heatmap": {
+    "Filter": "Tapis",
+    "Projects": "Bil. Projek"
   }
 }

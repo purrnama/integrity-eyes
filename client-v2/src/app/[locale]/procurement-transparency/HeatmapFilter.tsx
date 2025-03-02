@@ -6,12 +6,12 @@ import { Select } from "@base-ui-components/react";
 import { useTranslations } from "next-intl";
 
 export default function HeatmapFilter() {
-  const intl = useTranslations("heatmap-filter");
+  const intl = useTranslations("heatmap");
   return (
     <Select.Root>
       <Select.Trigger
         className={
-          "flex items-center justify-between py-2 px-3 rounded-lg gap-2 font-sans text-sm border border-zinc-300 dark:border-zinc-800"
+          "flex items-center min-w-42 justify-between py-2 px-3 rounded-lg gap-2 font-sans text-sm border border-zinc-300 dark:border-zinc-800"
         }
       >
         <Select.Value placeholder={intl("Filter")} />

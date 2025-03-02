@@ -97,6 +97,7 @@ export default function ProcurementTransparency() {
           <div className="sm:col-span-2">
             <TopCompaniesChart
               title={intl("Top Companies with Most Awarded Contracts")}
+              tooltip={intl("Contracts")}
             />
           </div>
           <div className="sm:col-span-2">
