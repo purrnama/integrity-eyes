@@ -8,9 +8,13 @@ import Layout from "@/components/Layout";
 import { useTranslations } from "next-intl";
 import CustomDialog from "@/components/CustomDialog";
 import MiniMegaphoneIcon from "@/components/icons/MiniMegaphoneIcon";
+import TotalAdvertisementTenders from "./TotalAdvertisementTenders";
+import TotalAwardedContracts from "./TotalAwardedContracts";
+import RegionWithMostContracts from "./RegionWithMostContracts";
 
 export default function ProcurementTransparency() {
   const intl = useTranslations("procurement-transparency");
+
   return (
     <Layout>
       <div className="flex flex-col space-y-4 lg:-mt-4">
@@ -62,29 +66,17 @@ export default function ProcurementTransparency() {
           <CustomDatePicker />
         </div>
         <div className="grid xl:grid-cols-4 sm:grid-cols-2 grid-cols-1 w-full gap-4 justify-stretch">
-          <StatCard
+          <TotalAdvertisementTenders
             title={intl("Total Advertisement Tenders")}
-            value="133"
-            interval={intl("Last 30 days")}
-            percentage="+30%"
-            trend="up"
-            data={[14, 46, 54, 40, 11, 15, 31, 15, 86, 85]}
+            interval={intl("All time")}
           />
-          <StatCard
+          <TotalAwardedContracts
             title={intl("Total Awarded Contracts")}
-            value="300"
-            interval={intl("Last 30 days")}
-            percentage="+30%"
-            trend="up"
-            data={[34, 58, 25, 18, 52, 39, 26, 96, 19, 76]}
+            interval={intl("All time")}
           />
-          <StatCard
+          <RegionWithMostContracts
             title={intl("Region with Most Contracts")}
-            value="70"
-            interval={intl("Last 30 days")}
-            percentage="+30%"
-            trend="down"
-            data={[97, 45, 19, 84, 90, 98, 73, 44, 96, 34]}
+            interval={intl("All time")}
           />
           <StatCard
             title={intl("Ministry with Most Contracts")}
