@@ -54,6 +54,10 @@ export interface TenderData {
   departmentIndicativePrice: string;
 }
 
+export interface Tenders {
+  tenders: TenderData[];
+}
+
 export const ContractHeader = [
   "contractId",
   "tenderName",
@@ -89,7 +93,11 @@ export interface ContractData {
   state?: stateType;
 }
 
-export interface elementCount {
+export interface Contracts {
+  contracts: ContractData[];
+}
+
+export interface ElementCount {
   [key: string]: number;
 }
 

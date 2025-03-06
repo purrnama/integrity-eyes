@@ -1,7 +1,6 @@
 import Header from "./Header";
 import TopCompaniesChart from "./TopCompaniesChart";
 import RegionChart from "./RegionChart";
-import CurrentTenders from "./CurrentTenders";
 import CustomDatePicker from "@/components/CustomDatePicker";
 import Layout from "@/components/Layout";
 import { useTranslations } from "next-intl";
@@ -11,6 +10,7 @@ import TotalAdvertisementTenders from "./TotalAdvertisementTenders";
 import TotalAwardedContracts from "./TotalAwardedContracts";
 import RegionWithMostContracts from "./RegionWithMostContracts";
 import MinistryWithMostContracts from "./MinistryWithMostContracts";
+import CurrentTendersDataGrid from "./CurrentTendersDataGrid";
 
 export default function ProcurementTransparency() {
   const intl = useTranslations("procurement-transparency");
@@ -86,13 +86,14 @@ export default function ProcurementTransparency() {
             <TopCompaniesChart
               title={intl("Top Companies with Most Awarded Contracts")}
               tooltip={intl("Contracts")}
+              topTitle={intl("Top")}
             />
           </div>
           <div className="sm:col-span-2">
             <RegionChart title={intl("Region and Sectors")} />
           </div>
           <div className="sm:col-span-2 xl:col-span-4">
-            <CurrentTenders title={intl("Current Tenders")} />
+            <CurrentTendersDataGrid title={intl("Current Tenders")} />
           </div>
         </div>
       </div>

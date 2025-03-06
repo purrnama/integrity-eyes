@@ -34,7 +34,7 @@ const rows = [
   },
 ];
 
-export default function CurrentTenders({ title }: { title: string }) {
+export default function CurrentTendersDataGrid({ title }: { title: string }) {
   return (
     <div className="flex flex-col space-y-4 w-full h-full min-h-[400px] grow p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg">
       <h2 className="font-medium">{title}</h2>

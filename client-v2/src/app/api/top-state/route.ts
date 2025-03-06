@@ -4,7 +4,7 @@ import * as path from "path";
 import {
   ContractData,
   ContractHeader,
-  elementCount,
+  ElementCount,
   states,
   stateType,
   TopState,
@@ -50,7 +50,7 @@ export async function GET() {
 
   const filteredDf = df.filter((data) => data.state !== "Unknown");
 
-  const s: elementCount = {};
+  const s: ElementCount = {};
   let sCount = 0;
   let res = "Unknown";
 

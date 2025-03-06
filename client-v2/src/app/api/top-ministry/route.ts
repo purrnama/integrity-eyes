@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import csv from "csv-parser";
 import * as path from "path";
-import { ContractData, ContractHeader, elementCount } from "@/lib/interfaces";
+import { ContractData, ContractHeader, ElementCount } from "@/lib/interfaces";
 
 export async function GET() {
   const df: ContractData[] = [];
@@ -28,7 +28,7 @@ export async function GET() {
 
   df.shift();
 
-  const m: elementCount = {};
+  const m: ElementCount = {};
   let mCount = 0;
   let res = "";
 

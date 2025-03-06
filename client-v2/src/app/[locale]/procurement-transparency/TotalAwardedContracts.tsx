@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import StatCard from "./StatCard";
-import { ContractData } from "@/lib/interfaces";
+import { Contracts } from "@/lib/interfaces";
 
 export default function TotalAwardedContracts({
   title,
@@ -16,8 +16,8 @@ export default function TotalAwardedContracts({
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("/api/total-awarded-contracts");
-      const data: { contractData: ContractData[] } = await res.json();
-      const count = data.contractData.length;
+      const data: Contracts = await res.json();
+      const count = data.contracts.length;
       setContractCount(count);
     };
     fetchData();

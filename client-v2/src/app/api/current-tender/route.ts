@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import csv from "csv-parser";
 import * as path from "path";
-import { TenderData, TenderHeader } from "@/lib/interfaces";
+import { TenderData, TenderHeader, Tenders } from "@/lib/interfaces";
 
 export async function GET() {
   const df: TenderData[] = [];
@@ -23,5 +23,7 @@ export async function GET() {
 
   df.shift();
 
-  return Response.json({ tenderData: df });
+  const tenders: Tenders = { tenders: df };
+
+  return Response.json(tenders);
 }

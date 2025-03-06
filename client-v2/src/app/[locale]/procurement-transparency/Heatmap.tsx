@@ -13,6 +13,7 @@ export default function Heatmap() {
     fillColor: "orange",
     fillOpacity: 0.7,
     weight: 1,
+    fontFamily: "Inter",
   };
   // @ts-expect-error skip feature type check
   const onEachState = (state, layer: Layer) => {

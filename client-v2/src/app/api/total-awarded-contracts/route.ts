@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import csv from "csv-parser";
 import * as path from "path";
-import { ContractData, ContractHeader } from "@/lib/interfaces";
+import { ContractData, ContractHeader, Contracts } from "@/lib/interfaces";
 
 export async function GET() {
   const df: ContractData[] = [];
@@ -26,5 +26,7 @@ export async function GET() {
 
   df.shift();
 
-  return Response.json({ contractData: df });
+  const contracts: Contracts = { contracts: df };
+
+  return Response.json(contracts);
 }
