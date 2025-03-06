@@ -1,4 +1,3 @@
-import StatCard from "./StatCard";
 import Header from "./Header";
 import TopCompaniesChart from "./TopCompaniesChart";
 import RegionChart from "./RegionChart";
@@ -11,6 +10,7 @@ import MiniMegaphoneIcon from "@/components/icons/MiniMegaphoneIcon";
 import TotalAdvertisementTenders from "./TotalAdvertisementTenders";
 import TotalAwardedContracts from "./TotalAwardedContracts";
 import RegionWithMostContracts from "./RegionWithMostContracts";
+import MinistryWithMostContracts from "./MinistryWithMostContracts";
 
 export default function ProcurementTransparency() {
   const intl = useTranslations("procurement-transparency");
@@ -78,13 +78,9 @@ export default function ProcurementTransparency() {
             title={intl("Region with Most Contracts")}
             interval={intl("All time")}
           />
-          <StatCard
+          <MinistryWithMostContracts
             title={intl("Ministry with Most Contracts")}
-            value="76"
-            interval={intl("Last 30 days")}
-            percentage="+30%"
-            trend="up"
-            data={[25, 72, 9, 56, 17, 26, 99, 75, 33, 64]}
+            interval={intl("All time")}
           />
           <div className="sm:col-span-2">
             <TopCompaniesChart

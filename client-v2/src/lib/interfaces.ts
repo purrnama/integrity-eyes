@@ -89,25 +89,15 @@ export interface ContractData {
   state?: stateType;
 }
 
-export interface stateCount {
-  johor?: number;
-  kedah?: number;
-  kelantan?: number;
-  melaka?: number;
-  "negeri sembilan"?: number;
-  pahang?: number;
-  "pulau pinang"?: number;
-  perak?: number;
-  perlis?: number;
-  sabah?: number;
-  sarawak?: number;
-  selangor?: number;
-  terengganu?: number;
-  "kuala lumpur"?: number;
-  Unknown?: number;
+export interface elementCount {
+  [key: string]: number;
 }
 
 export interface TopState {
   state: stateType;
+  count: number;
+}
+export interface TopMinistry {
+  ministry: string;
   count: number;
 }

@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import csv from "csv-parser";
 import * as path from "path";
-import { ContractData, ContractHeader } from "@/lib/interfaces";
+import { ContractData, ContractHeader, elementCount } from "@/lib/interfaces";
 
 export async function GET() {
   const df: ContractData[] = [];
@@ -13,18 +13,27 @@ export async function GET() {
 
   await new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
+      .on("error", (error) => {
+        console.log(error);
+      })
       .pipe(csv(ContractHeader))
       .on("data", (data) => df.push(data))
       .on("end", () => {
         resolve(df);
       })
       .on("error", (err) => {
-        console.log(err);
         reject(err);
       });
   });
 
   df.shift();
 
-  return Response.json({ contractData: df });
+  const tenderers: elementCount = {};
+
+  df.map((data) => {
+    const tender = data.winningTenderer;
+    tenderers[tender] = (tenderers[tender] || 0) + 1;
+  });
+
+  return Response.json(tenderers);
 }

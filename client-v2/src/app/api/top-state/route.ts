@@ -4,7 +4,7 @@ import * as path from "path";
 import {
   ContractData,
   ContractHeader,
-  stateCount,
+  elementCount,
   states,
   stateType,
   TopState,
@@ -30,15 +30,13 @@ export async function GET() {
 
   await new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
-      .on("error", (error) => {
-        console.log(error);
-      })
       .pipe(csv(ContractHeader))
       .on("data", (data) => df.push(data))
       .on("end", () => {
         resolve(df);
       })
       .on("error", (err) => {
+        console.log(err);
         reject(err);
       });
   });
@@ -52,9 +50,7 @@ export async function GET() {
 
   const filteredDf = df.filter((data) => data.state !== "Unknown");
 
-  console.log(filteredDf);
-
-  const s: stateCount = {};
+  const s: elementCount = {};
   let sCount = 0;
   let res = "Unknown";
 
@@ -68,7 +64,6 @@ export async function GET() {
   });
 
   const result: TopState = { state: res as stateType, count: sCount };
-  console.log(result);
 
   return Response.json(result);
 }

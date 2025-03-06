@@ -10,15 +10,13 @@ export async function GET() {
 
   await new Promise((resolve, reject) => {
     fs.createReadStream(filePath)
-      .on("error", (error) => {
-        console.log(error);
-      })
       .pipe(csv(TenderHeader))
       .on("data", (data) => df.push(data))
       .on("end", () => {
         resolve(df);
       })
       .on("error", (err) => {
+        console.log(err);
         reject(err);
       });
   });
