@@ -43,7 +43,7 @@ export const TenderHeader = [
   "departmentIndicativePrice",
 ];
 
-export interface TenderData {
+export interface Tender {
   tenderId: number;
   tenderTitle: string;
   tenderNumber: string;
@@ -54,8 +54,24 @@ export interface TenderData {
   departmentIndicativePrice: string;
 }
 
-export interface Tenders {
+export interface TenderData {
+  id: number;
+  tenderId: string;
+  projectName: string;
+  closingDate: string;
+  eligibilityCriteria: string;
+  region: string;
+  contractingAgency: string;
+  departmentIndicativePrice: string;
+  contactPerson: string;
+}
+
+export interface TenderDataGrid {
   tenders: TenderData[];
+}
+
+export interface Tenders {
+  tenders: Tender[];
 }
 
 export const ContractHeader = [
@@ -75,7 +91,7 @@ export const ContractHeader = [
   "longitude",
 ];
 
-export interface ContractData {
+export interface Contract {
   contractId: number;
   tenderName: string;
   tenderNumber: string;
@@ -94,7 +110,7 @@ export interface ContractData {
 }
 
 export interface Contracts {
-  contracts: ContractData[];
+  contracts: Contract[];
 }
 
 export interface ElementCount {
@@ -107,5 +123,9 @@ export interface TopState {
 }
 export interface TopMinistry {
   ministry: string;
+  count: number;
+}
+
+export interface CurrentTender {
   count: number;
 }

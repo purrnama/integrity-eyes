@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import StatCard from "./StatCard";
-import { Tenders } from "@/lib/interfaces";
+import { CurrentTender } from "@/lib/interfaces";
 
 export default function TotalAdvertisementTenders({
   title,
@@ -16,9 +16,8 @@ export default function TotalAdvertisementTenders({
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("/api/current-tender");
-      const data: Tenders = await res.json();
-      const count = data.tenders.length;
-      setTenderCount(count);
+      const data: CurrentTender = await res.json();
+      setTenderCount(data.count);
     };
     fetchData();
   });

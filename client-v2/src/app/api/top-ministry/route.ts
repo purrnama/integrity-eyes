@@ -1,10 +1,10 @@
 import * as fs from "fs";
 import csv from "csv-parser";
 import * as path from "path";
-import { ContractData, ContractHeader, ElementCount } from "@/lib/interfaces";
+import { Contract, ContractHeader, ElementCount } from "@/lib/interfaces";
 
 export async function GET() {
-  const df: ContractData[] = [];
+  const df: Contract[] = [];
 
   const filePath = path.join(
     process.cwd(),

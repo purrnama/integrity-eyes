@@ -2,7 +2,7 @@ import * as fs from "fs";
 import csv from "csv-parser";
 import * as path from "path";
 import {
-  ContractData,
+  Contract,
   ContractHeader,
   ElementCount,
   states,
@@ -21,7 +21,7 @@ function extractStateFromAddress(address: string) {
 }
 
 export async function GET() {
-  const df: ContractData[] = [];
+  const df: Contract[] = [];
 
   const filePath = path.join(
     process.cwd(),
