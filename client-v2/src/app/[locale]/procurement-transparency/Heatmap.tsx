@@ -1,12 +1,21 @@
 "use client";
 
+import { StateHeatmapValues } from "@/lib/interfaces";
 import { malaysiaGeoJSON } from "@/lib/MalaysiaGeoJSON";
-import { Layer, Point } from "leaflet";
+import createColormap from "colormap";
+import { Point } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useTranslations } from "next-intl";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
-export default function Heatmap() {
+const heatmapColors = createColormap<"hex">({
+  colormap: "hot",
+  format: "hex",
+  nshades: 100,
+  alpha: 0.7,
+}).reverse();
+
+export default function Heatmap({ states }: { states: StateHeatmapValues }) {
   const intl = useTranslations("heatmap");
   const mapStyle = {
     color: "black",
@@ -16,9 +25,16 @@ export default function Heatmap() {
     fontFamily: "Inter",
   };
   // @ts-expect-error skip feature type check
-  const onEachState = (state, layer: Layer) => {
+  const onEachState = (state, layer) => {
     const name = state.properties.shapeName;
-    layer.bindTooltip(`<b>${name}</b><br/>${intl("Projects")}:`, {
+    let count = 0;
+    let colormap = 0;
+    if (states[name] !== undefined) {
+      count = states[name].count;
+      colormap = states[name].colormap;
+    }
+    layer.options.fillColor = heatmapColors[colormap];
+    layer.bindTooltip(`<b>${name}</b><br/>${intl("Projects")}: ${count}`, {
       sticky: true,
       offset: new Point(10, 0),
     });

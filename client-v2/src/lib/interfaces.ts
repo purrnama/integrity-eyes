@@ -81,6 +81,7 @@ export const ContractHeader = [
   "acquisitionCategory",
   "ministryAgency",
   "winningTenderer",
+  "resultDate",
   "agreedAcceptedPrice",
   "winningTendererAddress",
   "pbmResultDate",
@@ -98,6 +99,7 @@ export interface Contract {
   acquisitionCategory: string;
   ministryAgency: string;
   winningTenderer: string;
+  resultDate: string;
   agreedAcceptedPrice: number;
   winningTendererAddress: string;
   pbmResultDate: string;
@@ -128,4 +130,8 @@ export interface TopMinistry {
 
 export interface CurrentTender {
   count: number;
+}
+
+export interface StateHeatmapValues {
+  [state: string]: { count: number; colormap: number };
 }
