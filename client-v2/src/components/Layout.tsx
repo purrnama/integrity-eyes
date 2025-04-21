@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       <SideMenu />
       <AppNavbar />
       <div className="mt-16 lg:mt-0 flex flex-col flex-1 overflow-y-auto p-4">
-        {children}
+        <div className="container mx-auto">{children}</div>
       </div>
     </div>
   );

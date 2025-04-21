@@ -55,10 +55,10 @@ export default function StatCard({
                   (trend == "up"
                     ? "border-orange-400/50 bg-orange-400/5"
                     : trend == "down"
-                      ? "border-orange-600/50 bg-orange-600/5"
-                      : trend == "neutral"
-                        ? "border-zinc-700/50 dark:bg-zinc-700/5"
-                        : "")
+                    ? "border-orange-600/50 bg-orange-600/5"
+                    : trend == "neutral"
+                    ? "border-zinc-700/50 dark:bg-zinc-700/5"
+                    : "")
                 }
               >
                 <span className="text-xs border-zinc-600/">{percentage}</span>

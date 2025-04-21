@@ -4,41 +4,16 @@ import * as path from "path";
 import {
   Contract,
   ContractHeader,
-  ElementCount,
-  StateHeatmapValues,
+  stateMapping,
+  TenderStateAgency,
 } from "@/lib/interfaces";
-
-const stateMapping: { [key: string]: string } = {
-  melaka: "Melaka",
-  "kuala lumpur": "Kuala Lumpur",
-  sabah: "Sabah",
-  pahang: "Pahang",
-  ipoh: "Perak",
-  johor: "Johor",
-  terengganu: "Terengganu",
-  "pulau pinang": "Penang",
-  kelantan: "Kelantan",
-  kedah: "Kedah",
-  perak: "Perak",
-  kuching: "Sarawak",
-  sarawak: "Sarawak",
-  "petaling jaya": "Selangor",
-  selangor: "Selangor",
-  "shah alam": "Selangor",
-  perlis: "Perlis",
-  "negeri sembilan": "Negeri Sembilan",
-  "kota kinabalu": "Sabah",
-  penang: "Penang",
-  putrajaya: "Putrajaya",
-  labuan: "Labuan",
-};
 
 export async function GET() {
   const df: Contract[] = [];
 
   const filePath = path.join(
     process.cwd(),
-    "/src/lib/output_with_location.csv",
+    "/src/lib/output_with_location.csv"
   );
 
   await new Promise((resolve, reject) => {
@@ -56,29 +31,20 @@ export async function GET() {
 
   df.shift();
 
-  const s: ElementCount = {};
-  let totalMapped = 0;
+  const result: TenderStateAgency[] = [];
 
   df.map((data) => {
     const location = data.location ? data.location.toLowerCase() : "unknown";
+    const tender: TenderStateAgency = { name: "", state: "", agency: "" };
     for (const [key, state] of Object.entries(stateMapping)) {
       if (location.indexOf(key) >= 0) {
-        s[state] = (s[state] || 0) + 1;
-        totalMapped++;
+        tender.state = state;
+        tender.name = data.tenderName;
+        tender.agency = data.ministryAgency;
+        result.push(tender);
         continue;
       }
     }
   });
-
-  const result: StateHeatmapValues = {};
-
-  for (const [state, count] of Object.entries(s)) {
-    if (state !== "Unknown") {
-      result[state] = { count: 0, colormap: 0 };
-      result[state].count = count;
-      result[state].colormap = Math.floor((count / totalMapped) * 100);
-    }
-  }
-
   return Response.json(result);
 }

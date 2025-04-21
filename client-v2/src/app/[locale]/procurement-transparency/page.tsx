@@ -36,7 +36,7 @@ export default function ProcurementTransparency() {
                         target="_blank"
                       >
                         {intl(
-                          "MyProcurement Malaysian Ministry of Finance Portal",
+                          "MyProcurement Malaysian Ministry of Finance Portal"
                         )}
                       </a>
                     </li>
@@ -53,7 +53,7 @@ export default function ProcurementTransparency() {
                     <li>
                       <a href="https://home.eperolehan.gov.my" target="_blank">
                         {intl(
-                          "ePerolehan Malaysian Electronic Procurement System",
+                          "ePerolehan Malaysian Electronic Procurement System"
                         )}
                       </a>
                     </li>

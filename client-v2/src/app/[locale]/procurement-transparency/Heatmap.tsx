@@ -1,11 +1,12 @@
 "use client";
 
-import { StateHeatmapValues } from "@/lib/interfaces";
+import { ElementCount, TenderStateAgency } from "@/lib/interfaces";
 import { malaysiaGeoJSON } from "@/lib/MalaysiaGeoJSON";
 import createColormap from "colormap";
 import { Point } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useTranslations } from "next-intl";
+import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
 
 const heatmapColors = createColormap<"hex">({
@@ -15,8 +16,11 @@ const heatmapColors = createColormap<"hex">({
   alpha: 0.7,
 }).reverse();
 
-export default function Heatmap({ states }: { states: StateHeatmapValues }) {
+export default function Heatmap({ tenders }: { tenders: TenderStateAgency[] }) {
+  const [stateCount, setStateCount] = useState<ElementCount>({});
+  const [totalCount, setTotalCount] = useState<number>(1);
   const intl = useTranslations("heatmap");
+
   const mapStyle = {
     color: "black",
     fillColor: "orange",
@@ -24,14 +28,27 @@ export default function Heatmap({ states }: { states: StateHeatmapValues }) {
     weight: 1,
     fontFamily: "Inter",
   };
+
+  useEffect(() => {
+    const s: ElementCount = {};
+    let total = 0;
+    tenders.map((tender) => {
+      const state = tender.state;
+      s[state] = (s[state] || 0) + 1;
+      total++;
+    });
+    setStateCount(s);
+    setTotalCount(total);
+  }, [tenders]);
+
   // @ts-expect-error skip feature type check
   const onEachState = (state, layer) => {
     const name = state.properties.shapeName;
     let count = 0;
     let colormap = 0;
-    if (states[name] !== undefined) {
-      count = states[name].count;
-      colormap = states[name].colormap;
+    if (stateCount[name] !== undefined) {
+      count = stateCount[name];
+      colormap = Math.floor((count / totalCount) * 100);
     }
     layer.options.fillColor = heatmapColors[colormap];
     layer.bindTooltip(`<b>${name}</b><br/>${intl("Projects")}: ${count}`, {
@@ -42,6 +59,7 @@ export default function Heatmap({ states }: { states: StateHeatmapValues }) {
   return (
     Boolean(window !== undefined) && (
       <MapContainer
+        key={JSON.stringify(tenders)}
         center={[4.63, 108.25]}
         zoom={5}
         className="h-[300px] rounded-md"

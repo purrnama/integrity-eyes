@@ -15,6 +15,31 @@ export const states = [
   "kuala lumpur",
 ];
 
+export const stateMapping: { [key: string]: string } = {
+  melaka: "Melaka",
+  "kuala lumpur": "Kuala Lumpur",
+  sabah: "Sabah",
+  pahang: "Pahang",
+  ipoh: "Perak",
+  johor: "Johor",
+  terengganu: "Terengganu",
+  "pulau pinang": "Penang",
+  kelantan: "Kelantan",
+  kedah: "Kedah",
+  perak: "Perak",
+  kuching: "Sarawak",
+  sarawak: "Sarawak",
+  "petaling jaya": "Selangor",
+  selangor: "Selangor",
+  "shah alam": "Selangor",
+  perlis: "Perlis",
+  "negeri sembilan": "Negeri Sembilan",
+  "kota kinabalu": "Sabah",
+  penang: "Penang",
+  putrajaya: "Putrajaya",
+  labuan: "Labuan",
+};
+
 export type stateType =
   | "johor"
   | "kedah"
@@ -132,6 +157,8 @@ export interface CurrentTender {
   count: number;
 }
 
-export interface StateHeatmapValues {
-  [state: string]: { count: number; colormap: number };
+export interface TenderStateAgency {
+  name: string;
+  state: string;
+  agency: string;
 }

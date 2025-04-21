@@ -5,16 +5,22 @@ import MiniFunnelIcon from "@/components/icons/MiniFunnelIcon";
 import { Select } from "@base-ui-components/react";
 import { useTranslations } from "next-intl";
 
-export default function HeatmapFilter() {
+export default function HeatmapFilter({
+  agencies,
+  onValueChange,
+}: {
+  agencies: string[];
+  onValueChange?: (value: unknown, event?: Event) => void;
+}) {
   const intl = useTranslations("heatmap");
   return (
-    <Select.Root>
+    <Select.Root onValueChange={onValueChange}>
       <Select.Trigger
         className={
           "flex items-center min-w-42 justify-between py-2 px-3 rounded-lg gap-2 font-sans text-sm border border-zinc-300 dark:border-zinc-800"
         }
       >
-        <Select.Value placeholder={intl("Filter")} />
+        <Select.Value className={"truncate"} placeholder={intl("Filter")} />
         <Select.Icon className={""}>
           <MiniFunnelIcon />
         </Select.Icon>
@@ -27,20 +33,22 @@ export default function HeatmapFilter() {
             }
           >
             <Select.Arrow className={""}></Select.Arrow>
-            <Select.Item
-              className={
-                "grid min-w-[var(--anchor-width)] cursor-default grid-cols-[0.75rem_1fr] items-center gap-2 py-2 pr-4 pl-2.5 text-sm leading-4 outline-none select-none group-data-[side=none]:min-w-[calc(var(--anchor-width)+1rem)] group-data-[side=none]:pr-12 group-data-[side=none]:text-sm group-data-[side=none]:leading-4 data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-md data-[highlighted]:before:bg-zinc-800"
-              }
-              value={"JABATAN PERDANA MENTERI / ISTANA NEGARA"}
-              key={"JABATAN PERDANA MENTERI / ISTANA NEGARA"}
-            >
-              <Select.ItemIndicator className={"col-start-1"}>
-                <MiniCheckIcon />
-              </Select.ItemIndicator>
-              <Select.ItemText className={"col-start-2"}>
-                JABATAN PERDANA MENTERI / ISTANA NEGARA
-              </Select.ItemText>
-            </Select.Item>
+            {agencies?.map((agency) => (
+              <Select.Item
+                className={
+                  "grid min-w-[var(--anchor-width)] cursor-default grid-cols-[0.75rem_1fr] items-center gap-2 py-2 pr-4 pl-2.5 text-sm leading-4 outline-none select-none group-data-[side=none]:min-w-[calc(var(--anchor-width)+1rem)] group-data-[side=none]:pr-12 group-data-[side=none]:text-sm group-data-[side=none]:leading-4 data-[highlighted]:relative data-[highlighted]:z-0 data-[highlighted]:before:absolute data-[highlighted]:before:inset-x-1 data-[highlighted]:before:inset-y-0 data-[highlighted]:before:z-[-1] data-[highlighted]:before:rounded-md data-[highlighted]:before:bg-zinc-800"
+                }
+                value={agency}
+                key={agency}
+              >
+                <Select.ItemIndicator className={"col-start-1"}>
+                  <MiniCheckIcon />
+                </Select.ItemIndicator>
+                <Select.ItemText className={"col-start-2"}>
+                  {agency}
+                </Select.ItemText>
+              </Select.Item>
+            ))}
           </Select.Popup>
         </Select.Positioner>
       </Select.Portal>
