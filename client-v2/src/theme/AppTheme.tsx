@@ -9,6 +9,9 @@ import { dataDisplayCustomizations } from "./customization/dataDisplay";
 import { dataGridCustomizations } from "./customization/dataGrid";
 import { surfacesCustomizations } from "./customization/surfaces";
 import { datePickersCustomizations } from "./customization/datePickers";
+import { navigationCustomizations } from "./customization/navigation";
+import { inputsCustomizations } from "./customization/inputs";
+import { feedbackCustomizations } from "./customization/feedback";
 
 const theme = createTheme({
   cssVariables: {
@@ -25,6 +28,9 @@ const theme = createTheme({
     ...surfacesCustomizations,
     ...dataGridCustomizations,
     ...datePickersCustomizations,
+    ...navigationCustomizations,
+    ...inputsCustomizations,
+    ...feedbackCustomizations,
   },
 });
 

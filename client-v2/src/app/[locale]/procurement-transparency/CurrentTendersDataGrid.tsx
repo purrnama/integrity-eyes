@@ -3,6 +3,7 @@
 import { TenderDataGrid } from "@/lib/interfaces";
 import AppTheme from "@/theme/AppTheme";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const columns: GridColDef[] = [
@@ -30,18 +31,23 @@ const columns: GridColDef[] = [
 ];
 
 export default function CurrentTendersDataGrid({ title }: { title: string }) {
+  const searchParams = useSearchParams();
+  const month = searchParams.get("month");
+  const year = searchParams.get("year");
   const [tenderDataGrid, setTenderDataGrid] = useState<TenderDataGrid>({
     tenders: [],
   });
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/current-tenders");
+      const res = await fetch(
+        "/api/current-tenders?month=" + (month ?? "") + "&year=" + (year ?? "")
+      );
       const data: TenderDataGrid = await res.json();
       setTenderDataGrid(data);
     };
     fetchData();
-  }, []);
+  }, [month, year]);
 
   return (
     <div className="flex flex-col space-y-4 w-full h-full min-h-[400px] grow p-4 border border-zinc-300 dark:border-zinc-700 rounded-lg">

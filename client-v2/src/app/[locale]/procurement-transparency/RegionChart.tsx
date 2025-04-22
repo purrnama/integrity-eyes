@@ -4,8 +4,12 @@ import { useEffect, useState } from "react";
 import Heatmap from "./Heatmap";
 import HeatmapFilter from "./HeatmapFilter";
 import { TenderStateAgency } from "@/lib/interfaces";
+import { useSearchParams } from "next/navigation";
 
 export default function RegionChart({ title }: { title: string }) {
+  const searchParams = useSearchParams();
+  const month = searchParams.get("month");
+  const year = searchParams.get("year");
   const [tenders, setTenders] = useState<TenderStateAgency[]>();
   const [agencies, setAgencies] = useState<string[]>([]);
   const [filterAgency, setFilterAgency] = useState<string>();
@@ -13,12 +17,14 @@ export default function RegionChart({ title }: { title: string }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/heatmap");
+      const res = await fetch(
+        "/api/heatmap?month=" + (month ?? "") + "&year=" + (year ?? "")
+      );
       const data: TenderStateAgency[] = await res.json();
       setTenders(data);
     };
     fetchData();
-  }, []);
+  }, [month, year]);
 
   useEffect(() => {
     if (tenders) {

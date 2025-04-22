@@ -4,6 +4,7 @@ import CustomNumberField from "@/components/CustomNumberField";
 import { ElementCount } from "@/lib/interfaces";
 import AppTheme from "@/theme/AppTheme";
 import { BarChart } from "@mui/x-charts";
+import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function TopCompaniesChart({
@@ -15,6 +16,9 @@ export default function TopCompaniesChart({
   tooltip: string;
   topTitle: string;
 }) {
+  const searchParams = useSearchParams();
+  const month = searchParams.get("month");
+  const year = searchParams.get("year");
   const [elements, setElements] = useState<ElementCount>({});
   const [tenders, setTenders] = useState<string[]>([]);
   const [count, setCount] = useState<number[]>([]);
@@ -22,12 +26,14 @@ export default function TopCompaniesChart({
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/top-companies");
+      const res = await fetch(
+        "/api/top-companies?month=" + (month ?? "") + "&year=" + (year ?? "")
+      );
       const data: ElementCount = await res.json();
       setElements(data);
     };
     fetchData();
-  }, []);
+  }, [month, year]);
 
   useEffect(() => {
     const sorted = Object.entries(elements).sort(([, a], [, b]) => b - a);

@@ -7,8 +7,13 @@ import {
   TenderDataGrid,
   TenderHeader,
 } from "@/lib/interfaces";
+import dayjs from "dayjs";
+import { NextRequest } from "next/server";
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+  const month = searchParams.get("month");
+  const year = searchParams.get("year");
   const df: Tender[] = [];
 
   const filePath = path.join(process.cwd(), "/src/lib/merged_dataset.csv");
@@ -27,9 +32,18 @@ export async function GET() {
   });
 
   df.shift();
+  let df_filtered: Tender[] = [];
+  if (month && year) {
+    df_filtered = df.filter((tender) => {
+      const date = dayjs(tender.invitationDate, "DD/MM/YYYY");
+      return date.month() === Number(month) && date.year() === Number(year);
+    });
+  } else {
+    df_filtered = df;
+  }
 
   const tenderData: TenderData[] = [];
-  df.map((tender) => {
+  df_filtered.map((tender) => {
     tenderData.push({
       id: tender.tenderId,
       tenderId: tender.tenderNumber,

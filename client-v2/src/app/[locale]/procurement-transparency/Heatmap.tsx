@@ -23,7 +23,6 @@ export default function Heatmap({ tenders }: { tenders: TenderStateAgency[] }) {
 
   const mapStyle = {
     color: "black",
-    fillColor: "orange",
     fillOpacity: 0.7,
     weight: 1,
     fontFamily: "Inter",
@@ -48,12 +47,13 @@ export default function Heatmap({ tenders }: { tenders: TenderStateAgency[] }) {
     let colormap = 0;
     if (stateCount[name] !== undefined) {
       count = stateCount[name];
-      colormap = Math.floor((count / totalCount) * 100);
+      colormap = Math.floor((count / totalCount) * 100 * 2);
     }
     layer.options.fillColor = heatmapColors[colormap];
     layer.bindTooltip(`<b>${name}</b><br/>${intl("Projects")}: ${count}`, {
       sticky: true,
       offset: new Point(10, 0),
+      className: "font-sans",
     });
   };
   return (
